@@ -122,8 +122,7 @@ input[type=range]{width:100%;margin:8px 0 2px;accent-color:#9C9C9C}
 <!-- FIN -->
 <section class="ecran" id="fin"><div class="page" style="text-align:center"><h1>L’expérience est terminée.</h1><div class="trait"></div>
   <p>Merci pour votre participation.</p>
-  <p id="fin-info" style="color:var(--doux)"></p>
-  <button class="btn centre" id="dl" hidden>Télécharger mes réponses</button></div></section>
+  </div></section>
 
 <script>
 
@@ -295,11 +294,6 @@ $("commencer").onclick = async () => {
   await envoyer("participant", ligneP);
 
   montrer("fin");
-  if (!envoiOK) {
-    $("fin-info").textContent = "L’envoi automatique a échoué. Merci de télécharger vos réponses et de les envoyer à l’organisateur.";
-    $("dl").hidden = false;
-    $("dl").onclick = () => { telecharger(participant + "_essais.csv", csv(essais)); telecharger(participant + "_participant.csv", csv([ligneP])); };
-  }
 };
 </script>
 </body>
