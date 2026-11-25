@@ -270,7 +270,7 @@ function questionnaire(){
 $("commencer").onclick = async () => {
   const nom = $("nom").value.trim().replace(/[^\w-]/g, "") || "anonyme";
   if (!$("consent").checked) { $("err-accueil").textContent = "Veuillez cocher la case de consentement pour continuer."; return; }
-  participant = nom + "_" + new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "") + "_" + Math.random().toString(36).slice(2, 5);
+  participant = nom;
   ctx = new (window.AudioContext || window.webkitAudioContext)();
   montrer("chargement");
   try { await precharger(CONFIG.STIMULI.concat(CONFIG.TEST)); }
@@ -286,13 +286,12 @@ $("commencer").onclick = async () => {
 
   for (let i = 0; i < liste.length; i++) {
     const r = await lancerEssai(nom + " · Extrait " + (i + 1) + "/" + liste.length, liste[i]);
-    const ligne = { participant, essai: i + 1, fichier: liste[i].split("/").pop(),
-      valence: r.valence.toFixed(4), energie: r.energie.toFixed(4), nb_ecoutes: r.nbEcoutes,
-      duree_ms: r.duree_ms, date: new Date().toISOString() };
+    const ligne = { participant, fichier: liste[i].split("/").pop(),
+      valence: r.valence.toFixed(4), energie: r.energie.toFixed(4) };
     essais.push(ligne); envoyer("essai", ligne);
   }
   const rep = await questionnaire();
-  const ligneP = Object.assign({ participant, date: new Date().toISOString() }, rep);
+  const ligneP = Object.assign({ participant }, rep);
   await envoyer("participant", ligneP);
 
   montrer("fin");
