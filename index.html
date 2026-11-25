@@ -59,16 +59,15 @@ input[type=range]{width:100%;margin:8px 0 2px;accent-color:#9C9C9C}
 <!-- ACCUEIL -->
 <section class="ecran actif" id="accueil"><div class="page">
   <h1>Étude EEMC</h1><div class="trait"></div>
-  <div class="sous">Bienvenue, et merci de votre participation</div>
+  <div class="sous">Bienvenue</div>
   <p>Au cours de cette étude, vous allez écouter plusieurs extraits audio. <b>Utilisez un casque</b> et un ordinateur si possible.</p>
   <p>Pendant et après chaque extrait, indiquez sa valeur émotionnelle, à travers :</p>
   <ul><li>son niveau d’énergie, de « peu énergique » à « très énergique »</li><li>sa valence, de « négatif » à « positif »</li></ul>
   <p>Vous pouvez réécouter chaque extrait autant de fois que vous le souhaitez, puis cliquer sur « Valider » pour bloquer la position du point et passer à la suite. Il n’y a ni bonne ni mauvaise réponse : seul votre ressenti compte.</p>
-  <p>Un extrait peut mettre quelques secondes à démarrer : il suffit d’être patient-e.</p>
   <p>Une courte présentation de l’écran va suivre, puis un extrait test qui ne sera pas comptabilisé.</p>
-  <label>Nom anonymisé (pseudonyme ou code)
+  <label>Nom anonymisé 
     <input class="champ" type="text" id="nom" maxlength="30" autocomplete="off"></label>
-  <label><input type="checkbox" id="consent"> J’accepte que mes réponses anonymes soient enregistrées à des fins de recherche pédagogique.</label>
+  <label><input type="checkbox" id="consent"> J’accepte que mes réponses soient enregistrées à des fins de recherche.</label>
   <div class="erreur" id="err-accueil"></div>
   <button class="btn centre" id="commencer">Commencer</button>
 </div></section>
@@ -113,7 +112,7 @@ input[type=range]{width:100%;margin:8px 0 2px;accent-color:#9C9C9C}
   <div class="erreur" id="err-q"></div>
   <div class="q"><label>Quel âge avez-vous ?</label><input class="champ" type="number" id="q-age" min="1" max="120" style="width:120px"></div>
   <div class="q"><label>Quel est votre genre ?</label><select class="champ" id="q-genre"><option value="">Sélectionner…</option><option>Femme</option><option>Homme</option><option>Autre</option></select></div>
-  <div class="q"><label>Faites-vous de la musique (instrument ou chant) ?</label>
+  <div class="q"><label>Faites-vous de la musique ?</label>
     <div class="radio"><label><input type="radio" name="prat" value="Oui"> Oui</label><label><input type="radio" name="prat" value="Non"> Non</label></div></div>
   <div class="q off" id="ligne-niveau"><label>Si oui, de quelle manière ?</label><select class="champ" id="q-niveau"><option value="">Sélectionner…</option><option>Professionnelle</option><option>Semi-professionnelle</option><option>Amateure</option><option>Très occasionnelle</option></select></div>
   <div class="q off" id="ligne-instr"><label>Si oui, quel(s) instrument(s) ?</label><input class="champ" type="text" id="q-instr" maxlength="80"></div>
@@ -127,7 +126,7 @@ input[type=range]{width:100%;margin:8px 0 2px;accent-color:#9C9C9C}
   <button class="btn centre" id="dl" hidden>Télécharger mes réponses</button></div></section>
 
 <script>
-/* ============ À MODIFIER ============ */
+
 const CONFIG = {
   SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxWDAjd-uv1-ih3Zx_16r3i2tDUcfgIvA0HMocYY2XJyVMsdjBzqNan48ickUknmeSr/exec",            // URL de ton Google Apps Script (voir le guide)
   DUREE_EXTRAIT: 20,         // secondes d'écoute maximum
@@ -137,7 +136,7 @@ const CONFIG = {
   STIMULI: ["stimuli/bwv1013.mp3", "stimuli/passagaliaingminor2.mp3", "stimuli/extrait1bonheurclavecin.mp3", "stimuli/extrait1bonheurorgue.mp3", "stimuli/extrait1bonheurpiano.mp3", "stimuli/extrait2colerecor.mp3", "stimuli/extrait2coleretrombone.mp3", "stimuli/extrait2coleretrompette.mp3", "stimuli/passacagliaingminor.mp3", "stimuli/passacagliaingminordoublebass.mp3", "stimuli/bwv1013basson.mp3", "stimuli/bwv1013hautbois.mp3" ],   // tous tes extraits
   TEST: ["stimuli_test/StimuliTest_BalBerlioz.mp3"]                              // extrait(s) test
 };
-/* ==================================== */
+
 
 const $ = id => document.getElementById(id);
 const attendre = ms => new Promise(r => setTimeout(r, ms));
