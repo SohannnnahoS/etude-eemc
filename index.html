@@ -163,7 +163,7 @@ function telecharger(nom, contenu){
   a.download = nom; a.click();
 }
 
-/* ---------- Audio (préchargé en mémoire) ---------- */
+/* ---------- Audio ---------- */
 async function precharger(liste){
   for (let i = 0; i < liste.length; i++) {
     $("msg-charg").textContent = "Préparation des extraits audio (" + (i + 1) + "/" + liste.length + "), merci de patienter…";
