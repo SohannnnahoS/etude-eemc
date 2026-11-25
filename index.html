@@ -60,11 +60,11 @@ input[type=range]{width:100%;margin:8px 0 2px;accent-color:#9C9C9C}
 <section class="ecran actif" id="accueil"><div class="page">
   <h1>Étude EEMC</h1><div class="trait"></div>
   <div class="sous">Bienvenue</div>
-  <p>Au cours de cette étude, vous allez écouter plusieurs extraits audio. <b>Utilisez un casque</b> et un ordinateur si possible.</p>
-  <p>Pendant et après chaque extrait, indiquez sa valeur émotionnelle, à travers :</p>
-  <ul><li>son niveau d’énergie, de « peu énergique » à « très énergique »</li><li>sa valence, de « négatif » à « positif »</li></ul>
-  <p>Vous pouvez réécouter chaque extrait autant de fois que vous le souhaitez, puis cliquer sur « Valider » pour bloquer la position du point et passer à la suite. Il n’y a ni bonne ni mauvaise réponse : seul votre ressenti compte.</p>
-  <p>Une courte présentation de l’écran va suivre, puis un extrait test qui ne sera pas comptabilisé.</p>
+  <p>Au cours de cette étude, vous allez écouter plusieurs extraits audio. <b>Si possible, </b> utilisez un casque et un ordinateur.</p>
+  <p>Indiquez la valeur émotionnelle de chaque extrait, et ce à travers :</p>
+  <ul><li>son niveau d’énergie : de « peu énergique » à « très énergique »</li><li>sa valence : de « négatif » à « positif »</li></ul>
+  <p>Vous pouvez réécouter chaque extrait autant de fois que vous le souhaitez, puis cliquer sur « Valider » pour bloquer la position du point et passer à la suite.</p>
+  <p>Après cette page voous trouverez une courte présentation de l’écran, puis un extrait test qui ne sera pas comptabilisé.</p>
   <label>Nom anonymisé 
     <input class="champ" type="text" id="nom" maxlength="30" autocomplete="off"></label>
   <label><input type="checkbox" id="consent"> J’accepte que mes réponses soient enregistrées à des fins de recherche.</label>
@@ -86,7 +86,7 @@ input[type=range]{width:100%;margin:8px 0 2px;accent-color:#9C9C9C}
 <section class="ecran" id="essai">
   <div class="haut"><span id="entete"></span><span id="temps"></span></div>
   <div class="barre"><i id="prog"></i></div>
-  <div class="consigne" id="consigne" hidden>Faites glisser le point rouge dans le carré, ou les curseurs : les deux sont connectés. Utilisez ce que vous préférez. Puis cliquez sur « Continuer ».</div>
+  <div class="consigne" id="consigne" hidden>Faites glisser le point rouge dans le carré, ou les curseurs : les deux sont connectés, utilisez ce que vous préférez. Une fois que la position du point vous convient, cliquez sur « Continuer ».</div>
   <div class="zone">
     <div class="col-carre">
       <div style="grid-column:2;grid-row:1">Très énergique</div>
@@ -105,12 +105,12 @@ input[type=range]{width:100%;margin:8px 0 2px;accent-color:#9C9C9C}
   </div>
 </section>
 
-<!-- QUESTIONNAIRE -->
+<!-- QUESTIONNAIRE FINAL-->
 <section class="ecran" id="quest"><div class="panneau quest">
   <h1 style="text-align:center;font-size:26px;margin:0">Questionnaire</h1>
-  <div class="sous" style="text-align:center;color:var(--doux);margin:4px 0 16px;font-size:15px">Quelques informations pour terminer. Vos réponses sont anonymes.</div>
+  <div class="sous" style="text-align:center;color:var(--doux);margin:4px 0 16px;font-size:15px">Quelques informations pour terminer.</div>
   <div class="erreur" id="err-q"></div>
-  <div class="q"><label>Quel âge avez-vous ?</label><input class="champ" type="number" id="q-age" min="1" max="120" style="width:120px"></div>
+  <div class="q"><label>Quel âge avez-vous ?</label><input class="champ" type="number" id="q-age" min="1" max="100" style="width:120px"></div>
   <div class="q"><label>Quel est votre genre ?</label><select class="champ" id="q-genre"><option value="">Sélectionner…</option><option>Femme</option><option>Homme</option><option>Autre</option></select></div>
   <div class="q"><label>Faites-vous de la musique ?</label>
     <div class="radio"><label><input type="radio" name="prat" value="Oui"> Oui</label><label><input type="radio" name="prat" value="Non"> Non</label></div></div>
@@ -119,21 +119,21 @@ input[type=range]{width:100%;margin:8px 0 2px;accent-color:#9C9C9C}
   <button class="btn centre" id="q-valider" style="width:200px">Valider</button>
 </div></section>
 
-<!-- FIN -->
+<!-- PAGE DE FIN -->
 <section class="ecran" id="fin"><div class="page" style="text-align:center"><h1>L’expérience est terminée.</h1><div class="trait"></div>
-  <p>Merci pour votre participation.</p>
+  <p>Merci pour votre participation :)</p>
   </div></section>
 
 <script>
 
 const CONFIG = {
-  SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxWDAjd-uv1-ih3Zx_16r3i2tDUcfgIvA0HMocYY2XJyVMsdjBzqNan48ickUknmeSr/exec",            // URL de ton Google Apps Script (voir le guide)
-  DUREE_EXTRAIT: 20,         // secondes d'écoute maximum
-  DELAI_AVANT_EXTRAIT: 1,    // secondes avant le lancement automatique
-  ALEATOIRE: true,           // ordre aléatoire des extraits
+  SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxWDAjd-uv1-ih3Zx_16r3i2tDUcfgIvA0HMocYY2XJyVMsdjBzqNan48ickUknmeSr/exec",            
+  DUREE_EXTRAIT: 20,        
+  DELAI_AVANT_EXTRAIT: 1,    
+  ALEATOIRE: true,           
   VALIDER_SEULEMENT_APRES_ECOUTE: false,
-  STIMULI: ["stimuli/1clavecin.mp3", "stimuli/1orgue.mp3", "stimuli/1piano.mp3", "stimuli/2cor.mp3", "stimuli/2trombone.mp3", "stimuli/2trompette.mp3", "stimuli/3basson.mp3", "stimuli/3flute.mp3", "stimuli/3hautbois.mp3", "stimuli/4doublebass.mp3", "stimuli/4luth.mp3", "stimuli/4violon.mp3" ],   // tous tes extraits
-  TEST: ["stimuli_test/StimuliTest_BalBerlioz.mp3"]                              // extrait(s) test
+  STIMULI: ["stimuli/1clavecin.mp3", "stimuli/1orgue.mp3", "stimuli/1piano.mp3", "stimuli/2cor.mp3", "stimuli/2trombone.mp3", "stimuli/2trompette.mp3", "stimuli/3basson.mp3", "stimuli/3flute.mp3", "stimuli/3hautbois.mp3", "stimuli/4doublebass.mp3", "stimuli/4luth.mp3", "stimuli/4violon.mp3" ],
+  TEST: ["stimuli_test/StimuliTest_BalBerlioz.mp3"]                              
 };
 
 
@@ -144,7 +144,7 @@ function montrer(id){ document.querySelectorAll(".ecran").forEach(e => e.classLi
 let ctx, BUFFERS = {}, participant = "", essais = [], envoiOK = true;
 const melanger = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
-/* ---------- Données ---------- */
+/* ---------- Data pr gg sheets ---------- */
 async function envoyer(type, data){
   if (!CONFIG.SCRIPT_URL) { envoiOK = false; return; }
   try {
